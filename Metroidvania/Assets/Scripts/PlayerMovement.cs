@@ -84,10 +84,10 @@ public class PlayerMovement : MonoBehaviour {
         playerState = PlayerState.Idle;        
 
         //Line 84-94 makes you fall quicker rather than same time up, same time down
-        if (rb.velocity.y < 0) 
+    /*    if (rb.velocity.y < 0) 
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        } 
+        } */
 
         if (Input.GetKeyDown(KeyCode.Space) && grounded == true)
         {
