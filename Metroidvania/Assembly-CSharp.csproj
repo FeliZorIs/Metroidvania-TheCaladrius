@@ -53,10 +53,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\CameraFollow.cs" />
-     <Compile Include="Assets\Scripts\grapplingHook.cs" />
-     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-     <Compile Include="Assets\Scripts\RopeSystem.cs" />
+     <Compile Include="Assets\Scripts\Enemies\BasicEnemyMove.cs" />
+     <Compile Include="Assets\Scripts\PlayerRelated\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\PlayerRelated\grapplingHook.cs" />
+     <Compile Include="Assets\Scripts\PlayerRelated\Player_Health.cs" />
+     <Compile Include="Assets\Scripts\PlayerRelated\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\PlayerRelated\RopeSystem.cs" />
+     <Compile Include="Assets\Scripts\UI\Health_UI.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/Oris/git/metroidvania/Metroidvania/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
