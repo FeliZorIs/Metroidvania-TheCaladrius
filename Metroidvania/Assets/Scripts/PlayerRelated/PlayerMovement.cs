@@ -5,12 +5,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     Rigidbody2D rb;
+    SpriteRenderer sr;
+
     public bool grounded;
 
     public float speed;
     public float jumpF;
 
     public int Jcount = 0;
+    public float health;
 
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
@@ -18,12 +21,19 @@ public class PlayerMovement : MonoBehaviour {
     private float tempSpeed;
     private Vector2 direction;
 
+    //knockback
+    public float knockDur;
+    public float knockbackPwr;
+    public int knockbackForce;
+
+
     enum PlayerState
     {
         Idle,
         Moving,
         Jumping,
         Attacking,
+        Hit,
     };
     PlayerState playerState;
 
@@ -31,7 +41,8 @@ public class PlayerMovement : MonoBehaviour {
 	void Start () 
     {
         grounded = true;
-        rb = GetComponent<Rigidbody2D>();    		
+        rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
@@ -52,6 +63,8 @@ public class PlayerMovement : MonoBehaviour {
                 break;
             case PlayerState.Attacking:
                 break;
+            case PlayerState.Hit:
+                break;
         }
 	}
 
@@ -63,6 +76,7 @@ public class PlayerMovement : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.A))
         {
+            sr.flipX = true;
             playerState = PlayerState.Moving;
             tempSpeed = speed;
             direction = Vector2.left;
@@ -71,6 +85,7 @@ public class PlayerMovement : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.D))
         {
+            sr.flipX = false;
             playerState = PlayerState.Moving;
             tempSpeed = speed;
             direction = Vector2.right;
@@ -83,7 +98,7 @@ public class PlayerMovement : MonoBehaviour {
     {
         playerState = PlayerState.Idle;        
 
-        //Line 84-94 makes you fall quicker rather than same time up, same time down
+        //makes you fall quicker rather than same time up, same time down
         if (rb.velocity.y < 0) 
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -91,7 +106,6 @@ public class PlayerMovement : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space) && grounded == true)
         {
-            Jcount = 0;
             playerState = PlayerState.Jumping;
             rb.velocity = Vector2.up * jumpF;
         }
@@ -99,7 +113,8 @@ public class PlayerMovement : MonoBehaviour {
         //attempt at double jump
         if (grounded == false)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && Jcount < 1)
+            
+            if (Input.GetKeyDown(KeyCode.Space) && Jcount < 2)
             {
                 Jcount++;
                 rb.velocity = Vector2.up * jumpF;
@@ -107,12 +122,22 @@ public class PlayerMovement : MonoBehaviour {
         } 
     }
     
-
+    //when you touch the ground, or hit an enemy
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
             grounded = true;
+            Jcount = 0;
+        }
+
+        //when hit by enemy, get puched back and damage dealt
+        if(collision.gameObject.tag == "Enemy")
+        {
+            if(sr.flipX == false)
+                StartCoroutine(knockback(knockDur, knockbackPwr, transform.position, knockbackForce));
+            if(sr.flipX == true)
+                StartCoroutine(knockback(knockDur, knockbackPwr, transform.position, -knockbackForce));
         }
     }
 
@@ -121,6 +146,19 @@ public class PlayerMovement : MonoBehaviour {
         if (collision.gameObject.tag == "Ground")
         {
             grounded = false;
+            Jcount = 1;
         }
+    }
+
+    //Coroutine for knockback
+    public IEnumerator knockback(float knockDur, float knockbackPwr, Vector3 knockbackDir, int force)
+    {
+        float timer = 0;
+        while (knockDur > timer)
+        {
+            timer += Time.deltaTime;
+            rb.AddForce(new Vector3(knockbackDir.x * -force, knockbackDir.y * knockbackPwr, transform.position.z));
+        }
+        yield return 0;
     }
 }
