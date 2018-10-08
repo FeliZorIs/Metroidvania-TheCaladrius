@@ -34,7 +34,7 @@ public class Player : MonoBehaviour {
         Moving,
         Jumping,
         Attacking,
-        Hit,
+        KnockBack,
     };
     PlayerState playerState;
 
@@ -65,7 +65,13 @@ public class Player : MonoBehaviour {
                 break;
             case PlayerState.Attacking:
                 break;
-            case PlayerState.Hit:
+            case PlayerState.KnockBack:
+                if(sr.flipX == false)
+                    StartCoroutine(knockback(knockDur, knockbackPwr, transform.position, knockbackForce));
+                if(sr.flipX == true)
+                    StartCoroutine(knockback(knockDur, knockbackPwr, transform.position, -knockbackForce));
+                anim.SetBool("player_knockback", false);
+                playerState = PlayerState.Idle;
                 break;
         }
 	}
@@ -96,7 +102,7 @@ public class Player : MonoBehaviour {
             tempSpeed = speed;
             direction = Vector2.right;
             transform.Translate(direction * tempSpeed * Time.deltaTime);
-        }         
+        }
     }
 
     //Jump
@@ -137,13 +143,11 @@ public class Player : MonoBehaviour {
             Jcount = 0;
         }
 
-        //when hit by enemy, get puched back and damage dealt
+        //when hit by enemy, sends player to hit animation
         if(collision.gameObject.tag == "Enemy")
         {
-            if(sr.flipX == false)
-                StartCoroutine(knockback(knockDur, knockbackPwr, transform.position, knockbackForce));
-            if(sr.flipX == true)
-                StartCoroutine(knockback(knockDur, knockbackPwr, transform.position, -knockbackForce));
+            anim.SetBool("player_knockback", true);
+            playerState = PlayerState.KnockBack;
         }
     }
 
@@ -159,12 +163,13 @@ public class Player : MonoBehaviour {
     //Coroutine for knockback
     public IEnumerator knockback(float knockDur, float knockbackPwr, Vector3 knockbackDir, float force)
     {
+        
         float timer = 0;
         while (knockDur > timer)
         {
             timer += Time.deltaTime;
             rb.AddForce(new Vector3(knockbackDir.x * -force, knockbackDir.y * knockbackPwr, transform.position.z));
-        }
+        }      
         yield return 0;
     }
 }
