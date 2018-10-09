@@ -16,4 +16,13 @@ public class BasicEnemyMove : MonoBehaviour {
     {
         this.transform.Translate(Vector2.left * speed * Time.deltaTime);
 	}
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<Player>().health -= 1;
+        }
+    }
+
 }
