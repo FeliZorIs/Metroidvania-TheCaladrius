@@ -70,7 +70,7 @@ public class Player : MonoBehaviour {
                     StartCoroutine(knockback(knockDur, knockbackPwr, transform.position, knockbackForce));
                 if(sr.flipX == true)
                     StartCoroutine(knockback(knockDur, knockbackPwr, transform.position, -knockbackForce));
-                anim.SetBool("player_knockback", false);
+                anim.SetTrigger("player_knockback");
                 playerState = PlayerState.Idle;
                 break;
         }
@@ -131,7 +131,8 @@ public class Player : MonoBehaviour {
                 Jcount++;
                 rb.velocity = Vector2.up * jumpF;
             }
-        } 
+        }
+
     }
     
     //when you touch the ground, or hit an enemy
