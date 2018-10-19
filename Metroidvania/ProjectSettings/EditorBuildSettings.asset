@@ -11,4 +11,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test Area.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Dynamic Asset Test/GameTest.unity
+    guid: 0ae3fc6c1b9a3f54b8c85b3fed107d92
+  - enabled: 1
+    path: Assets/Scenes/Dynamic Asset Test/Player.unity
+    guid: f109c44c3b795cf4985f0fc204cc24be
+  - enabled: 1
+    path: Assets/Scenes/Dynamic Asset Test/TestScene1.unity
+    guid: e76a12dce007ba64db01d988252cae1f
+  - enabled: 1
+    path: Assets/Scenes/Dynamic Asset Test/TestScene2.unity
+    guid: e7dba592cbabe6e419d0b25d8ae192b8
+  - enabled: 1
+    path: Assets/Scenes/Dynamic Asset Test/TestScene3.unity
+    guid: bacd7ae89fd134242af7e7b9e2269f15
   m_configObjects: {}

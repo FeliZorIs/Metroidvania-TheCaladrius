@@ -28,6 +28,8 @@ public class Player : MonoBehaviour {
     public float knockbackPwr;
     public float knockbackForce;
 
+    Vector3 landedPosition;
+
 
     enum PlayerState
     {
@@ -136,12 +138,14 @@ public class Player : MonoBehaviour {
 
     }
     
-    //when you touch the ground, or hit an enemy
+    
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        //when you touch the ground, or hit an enemy
         if (collision.gameObject.tag == "Ground")
         {
             grounded = true;
+            landedPosition = transform.position;
             Jcount = 0;
         }
 
@@ -150,6 +154,13 @@ public class Player : MonoBehaviour {
         {
             anim.SetBool("player_knockback", true);
             playerState = PlayerState.KnockBack;
+        }
+
+        //When you fall out of bounds
+        if (collision.gameObject.tag == "Out Of Bounds")
+        {
+            transform.position = landedPosition;
+            health -= 1;
         }
     }
 

@@ -90,7 +90,7 @@ Grid:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1291936859083532}
   m_Enabled: 1
-  m_CellSize: {x: 12.5, y: 8.333333, z: 0}
+  m_CellSize: {x: 1, y: 1, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -130,7 +130,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 5.25, y: 3.1666665, z: 0}
+  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -652,15 +652,6 @@ Tilemap:
     second:
       m_TileIndex: 45
       m_TileSpriteIndex: 45
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: 5, y: -5, z: 0}
-    second:
-      m_TileIndex: 108
-      m_TileSpriteIndex: 108
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -1370,7 +1361,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 1f37619ffd22ab74eba87602c2509d57, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 1778f36da6afe3b428d9f5d0c2f581bd, type: 2}
-  - m_RefCount: 2
+  - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: a4a0ba6c50f589440994938b66c949da, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 4a2ed7cde16535e4bb4ebcbf3c01e0cb, type: 2}
@@ -1591,12 +1582,12 @@ Tilemap:
     m_Data: {fileID: 21300212, guid: 2eeb0d4e8888f48459040781a511455e, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300214, guid: 2eeb0d4e8888f48459040781a511455e, type: 3}
-  - m_RefCount: 2
+  - m_RefCount: 1
     m_Data: {fileID: 21300216, guid: 2eeb0d4e8888f48459040781a511455e, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 534a59147f0781b4a9f61dbb322f80f8, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 112
+  - m_RefCount: 111
     m_Data:
       e00: 1
       e01: 0
@@ -1615,7 +1606,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 112
+  - m_RefCount: 111
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}

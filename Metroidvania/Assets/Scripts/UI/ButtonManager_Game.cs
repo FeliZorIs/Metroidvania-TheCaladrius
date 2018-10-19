@@ -7,12 +7,14 @@ public class ButtonManager_Game : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject Map;
+    GameObject blaster;
 
     public bool isPaused;
     public bool openMap;
 
     void Start()
     {
+        blaster = GameObject.Find("/Player/BlasterNotReally");
         pauseMenu.SetActive(false);
         Map.SetActive(false);
 
@@ -68,11 +70,15 @@ public class ButtonManager_Game : MonoBehaviour
 
             else if (openMap == false)
             {
+                blaster.SetActive(false);
+                Time.timeScale = 0;
                 openMap = true;
                 OpenMap();
             }
             else
             {
+                blaster.SetActive(true);
+                Time.timeScale = 1;
                 openMap = false;
                 closeMap();
             }
