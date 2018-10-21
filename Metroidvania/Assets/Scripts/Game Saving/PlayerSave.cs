@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerSave : MonoBehaviour {
 
@@ -21,11 +22,6 @@ public class PlayerSave : MonoBehaviour {
 
 	void Update () 
     {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            GameController.gameController.Delete();
-        }
-
         if (Input.GetButtonDown("Save"))
         {
             GameController.gameController.playerPositionX = transform.position.x;

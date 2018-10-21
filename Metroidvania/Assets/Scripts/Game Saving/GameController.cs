@@ -4,6 +4,7 @@ using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour 
 {
@@ -12,6 +13,10 @@ public class GameController : MonoBehaviour
     public float playerPositionX;
     public float playerPositionY;
     public float playerPositionZ;
+
+    Scene currentScene;
+    public int SceneIndex;
+
 
 	// Use this for initialization
 	void Awake() 
@@ -37,9 +42,11 @@ public class GameController : MonoBehaviour
         data.playerPosX = playerPositionX;
         data.playerPosY = playerPositionY;
         data.playerPosZ = playerPositionZ;
+        data.sceneIndex = currentScene.buildIndex;
 
         bf.Serialize(file, data);
         file.Close();
+        Debug.Log(currentScene.buildIndex);
     }
 
     public void load()
@@ -52,9 +59,10 @@ public class GameController : MonoBehaviour
             PlayerData data = (PlayerData)bf.Deserialize(file);
             file.Close();
 
+            SceneManager.LoadScene(data.sceneIndex);
             playerPositionX = data.playerPosX;
             playerPositionY = data.playerPosY;
-            playerPositionZ = data.playerPosZ;
+            playerPositionZ = data.playerPosZ;           
         }
     }
 
@@ -76,4 +84,5 @@ class PlayerData
     public float playerPosX;
     public float playerPosY;
     public float playerPosZ;
+    public int sceneIndex;
 }

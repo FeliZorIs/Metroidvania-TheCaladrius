@@ -12,13 +12,12 @@ public class SceneManagerTutorial : MonoBehaviour
         Instance = this;
         Load("Player");
         Load("TestScene1");
-        Load("TestScene2");
     }
 
     public void Load(string sceneName)
     {
         if (!SceneManager.GetSceneByName(sceneName).isLoaded)
-            SceneManager.LoadScene(sceneName, LoadSceneMode.Additive); ;
+            SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
     }
 
     public void UnLoad(string sceneName)

@@ -9,7 +9,7 @@ public class LoadTrigger : MonoBehaviour
     public string LoadName;
     public string unloadName;
 
-    public void OnTriggerEnter(Collider col)
+    public void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player")
         {
@@ -17,7 +17,7 @@ public class LoadTrigger : MonoBehaviour
                 SceneManagerTutorial.Instance.Load(LoadName);
 
             if (unloadName != null)
-                StartCoroutine("UnloadScene");
+                StartCoroutine(UnloadScene());
         }
     }
 
