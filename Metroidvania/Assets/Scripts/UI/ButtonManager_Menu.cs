@@ -14,12 +14,12 @@ public class ButtonManager_Menu : MonoBehaviour
 
     public void newGame()
     {
-        SceneManager.LoadScene("Test Area");
+        SceneManager.LoadScene("GameTest");
     }
 
     public void loadGame()
     {
         loaded = true;
-        SceneManager.LoadScene("Test Area");
+        SceneManager.LoadScene("GameTest");
     }
 }

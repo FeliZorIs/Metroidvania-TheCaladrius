@@ -1,0 +1,14 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Marker : MonoBehaviour {
+
+	// Use this for initialization
+	void Start () 
+    {
+        MarkerManager.Instance.RegisterMarker(this);
+        this.gameObject.SetActive(false);
+	}
+
+}

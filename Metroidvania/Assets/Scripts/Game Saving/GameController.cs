@@ -59,7 +59,7 @@ public class GameController : MonoBehaviour
             PlayerData data = (PlayerData)bf.Deserialize(file);
             file.Close();
 
-            SceneManager.LoadScene(data.sceneIndex);
+            //SceneManager.LoadScene(data.sceneIndex);
             playerPositionX = data.playerPosX;
             playerPositionY = data.playerPosY;
             playerPositionZ = data.playerPosZ;           

@@ -32,13 +32,18 @@ public class PlayerSave : MonoBehaviour {
 
         if (Input.GetButtonDown("Load"))
         {
-            GameController.gameController.load();
-            transform.position = new Vector3
-            (
-                GameController.gameController.playerPositionX,
-                GameController.gameController.playerPositionY,
-                GameController.gameController.playerPositionZ
-            );
+            LoadGame();
         }
 	}
+
+    public void LoadGame()
+    {
+        GameController.gameController.load();
+        transform.position = new Vector3
+        (
+            GameController.gameController.playerPositionX,
+            GameController.gameController.playerPositionY,
+            GameController.gameController.playerPositionZ
+        );
+    }
 }

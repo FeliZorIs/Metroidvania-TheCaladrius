@@ -69,6 +69,8 @@
      <Compile Include="Assets\Scripts\UI\ButtonManager_Game.cs" />
      <Compile Include="Assets\Scripts\UI\ButtonManager_Menu.cs" />
      <Compile Include="Assets\Scripts\UI\Health_UI.cs" />
+     <Compile Include="Assets\Scripts\UI\Marker.cs" />
+     <Compile Include="Assets\Scripts\UI\MarkerManager.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/Oris/git/metroidvania/Metroidvania/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
