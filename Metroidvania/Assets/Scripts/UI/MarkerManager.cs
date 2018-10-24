@@ -19,10 +19,9 @@ public class MarkerManager : MonoBehaviour {
     }
 
     void Update()
-    {
-
+    {        
         //update player icon in real time
-        //playerPosOnMap(areaName);
+        playerPosOnMap(areaName);
     }
 
     public void RegisterMarker(Marker marker)
@@ -61,21 +60,21 @@ public class MarkerManager : MonoBehaviour {
     }
 
     //gets the name of the player's area  and then sets their icon accordingly
-  /*  public void playerPosOnMap(string areaName)
+    public void playerPosOnMap(string areaName)
     {
         if (areaName == "Player In Area1") //Area 1
         {
-            player_icon_rect.position = new Vector3(623, 384, 0);
+            player_icon.position = new Vector3(623, 384, 0);
         }
 
         if (areaName == "Player In Area2") //Area 2
         {
-            player_icon_rect.position = new Vector3(743, 384, 0);
+            player_icon.position = new Vector3(743, 384, 0);
         }
 
         if (areaName == "Player In Area3") //Area 3
         {
-            player_icon_rect.position = new Vector3(803, 384, 0);
+            player_icon.position = new Vector3(863, 384, 0);
         }
-    }*/
+    }
 }

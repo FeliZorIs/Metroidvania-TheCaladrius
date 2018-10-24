@@ -28,6 +28,10 @@ public class Player : MonoBehaviour {
     public float knockbackPwr;
     public float knockbackForce;
 
+    //send this to ManagerMarker
+    public string areaPasser;
+    public GameObject MarkerManager;
+
     Vector3 landedPosition;
 
 
@@ -53,6 +57,8 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
+        MarkerManager.GetComponent<MarkerManager>().areaName = areaPasser;
+
         switch (playerState)
         { 
             case PlayerState.Idle:

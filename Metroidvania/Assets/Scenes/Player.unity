@@ -186,6 +186,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ea46226e433a0946ad04ddded4a3399, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &705784307 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1925506562013618, guid: 9ea46226e433a0946ad04ddded4a3399,
+    type: 2}
+  m_PrefabInternal: {fileID: 705784306}
 --- !u!114 &1031551897 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114968742298313210, guid: 9ea46226e433a0946ad04ddded4a3399,
@@ -298,10 +303,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1841292555387936, guid: c2e535bb39b4b444c928e2a9a60ac120, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 114018974767944652, guid: c2e535bb39b4b444c928e2a9a60ac120,
+        type: 2}
+      propertyPath: MarkerManager
+      value: 
+      objectReference: {fileID: 705784307}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2e535bb39b4b444c928e2a9a60ac120, type: 2}
   m_IsPrefabAsset: 0
@@ -442,11 +448,15 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1823444607091394, guid: 9b000daaea547a944a169c7e6c82f608, type: 2}
+      propertyPath: m_Name
+      value: PlayerIcon
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b000daaea547a944a169c7e6c82f608, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &1925667426 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1823444607091394, guid: 9b000daaea547a944a169c7e6c82f608,
+--- !u!224 &1925667426 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 224415397373181476, guid: 9b000daaea547a944a169c7e6c82f608,
     type: 2}
   m_PrefabInternal: {fileID: 1925667425}
