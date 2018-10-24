@@ -5,6 +5,8 @@ using UnityEngine;
 public class MarkerManager : MonoBehaviour {
 
     public static MarkerManager Instance { get; set; }
+    public RectTransform player_icon;
+    public string areaName;
 
     public List<Marker> markers;
 
@@ -12,6 +14,15 @@ public class MarkerManager : MonoBehaviour {
     {
         if (Instance == null)
             Instance = this;
+
+
+    }
+
+    void Update()
+    {
+
+        //update player icon in real time
+        //playerPosOnMap(areaName);
     }
 
     public void RegisterMarker(Marker marker)
@@ -35,7 +46,7 @@ public class MarkerManager : MonoBehaviour {
         {
             mark.gameObject.SetActive(false);
         }
-        markers[0].gameObject.SetActive(true);
+        markers[1].gameObject.SetActive(true);
     }
 
     //set the second area marker and turn off the rest
@@ -45,45 +56,26 @@ public class MarkerManager : MonoBehaviour {
         {
             mark.gameObject.SetActive(false);
         }
-        markers[1].gameObject.SetActive(true);
+        //try to set it by name
+        markers[0].gameObject.SetActive(true);
     }
 
-    /*
-    void Start()
+    //gets the name of the player's area  and then sets their icon accordingly
+  /*  public void playerPosOnMap(string areaName)
     {
-        area1_cm.SetActive(false);
-        area2_cm.SetActive(false);
-    }
+        if (areaName == "Player In Area1") //Area 1
+        {
+            player_icon_rect.position = new Vector3(623, 384, 0);
+        }
 
-    public void MarkArea1()
-    {
-        if (area1Active == false)
+        if (areaName == "Player In Area2") //Area 2
         {
-            area1_cm.SetActive(true);
-            area1Active = true;
-            activeStack.Push(area1_cm);
+            player_icon_rect.position = new Vector3(743, 384, 0);
         }
-        else
-        {
-            area1_cm.SetActive(false);
-            area1Active = false;
-            activeStack.Pop();
-        }
-    }
 
-    public void MarkArea2()
-    {
-        if (area2Active == false)
+        if (areaName == "Player In Area3") //Area 3
         {
-            area2_cm.SetActive(true);
-            area2Active = true;
-            activeStack.Push(area1_cm);
-        }
-        else
-        {
-            area2_cm.SetActive(false);
-            area2Active = false;
-            activeStack.Pop();
+            player_icon_rect.position = new Vector3(803, 384, 0);
         }
     }*/
 }

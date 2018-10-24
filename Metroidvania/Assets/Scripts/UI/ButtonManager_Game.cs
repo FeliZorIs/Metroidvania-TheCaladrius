@@ -70,14 +70,14 @@ public class ButtonManager_Game : MonoBehaviour
 
             else if (openMap == false)
             {
-                blaster.SetActive(false);
+                //blaster.SetActive(false);
                 Time.timeScale = 0;
                 openMap = true;
                 OpenMap();
             }
             else
             {
-                blaster.SetActive(true);
+                //blaster.SetActive(true);
                 Time.timeScale = 1;
                 openMap = false;
                 closeMap();
