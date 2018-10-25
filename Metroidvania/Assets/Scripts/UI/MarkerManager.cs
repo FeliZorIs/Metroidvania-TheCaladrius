@@ -45,7 +45,7 @@ public class MarkerManager : MonoBehaviour {
         {
             mark.gameObject.SetActive(false);
         }
-        markers[1].gameObject.SetActive(true);
+        markers[0].gameObject.SetActive(true);
     }
 
     //set the second area marker and turn off the rest
@@ -56,7 +56,17 @@ public class MarkerManager : MonoBehaviour {
             mark.gameObject.SetActive(false);
         }
         //try to set it by name
-        markers[0].gameObject.SetActive(true);
+        markers[1].gameObject.SetActive(true);
+    }
+
+    public void setMark3()
+    {
+        foreach (Marker mark in markers)
+        {
+            mark.gameObject.SetActive(false);
+        }
+        //try to set it by name
+        markers[2].gameObject.SetActive(true);
     }
 
     //gets the name of the player's area  and then sets their icon accordingly
@@ -65,16 +75,28 @@ public class MarkerManager : MonoBehaviour {
         if (areaName == "Player In Area1") //Area 1
         {
             player_icon.position = new Vector3(623, 384, 0);
+            if(markers[0].isActiveAndEnabled == true)
+            { 
+                markers[0].gameObject.SetActive(false);
+            }
         }
 
         if (areaName == "Player In Area2") //Area 2
         {
             player_icon.position = new Vector3(743, 384, 0);
+            if(markers[1].isActiveAndEnabled == true)
+            { 
+                markers[1].gameObject.SetActive(false);
+            }
         }
 
         if (areaName == "Player In Area3") //Area 3
         {
             player_icon.position = new Vector3(863, 384, 0);
+            if(markers[2].isActiveAndEnabled == true)
+            { 
+                markers[2].gameObject.SetActive(false);
+            }
         }
     }
 }
