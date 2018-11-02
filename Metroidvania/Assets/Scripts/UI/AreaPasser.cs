@@ -6,10 +6,7 @@ public class AreaPasser : MonoBehaviour {
 
     public string passToPlayer;
 
-    void Start()
-    {
-    }
-	// Use this for initialization
+    //Passes the name of the Area to the player, who then passes that to the MarkerManager
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Player")

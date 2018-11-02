@@ -34,7 +34,6 @@ public class Player : MonoBehaviour {
 
     Vector3 landedPosition;
 
-
     enum PlayerState
     {
         Idle,
@@ -53,10 +52,10 @@ public class Player : MonoBehaviour {
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
 	}
-	
-	// Update is called once per frame
+
 	void Update () 
     {
+        //sends the name of the current area to the MarkerManager
         MarkerManager.GetComponent<MarkerManager>().areaName = areaPasser;
 
         switch (playerState)
@@ -144,6 +143,9 @@ public class Player : MonoBehaviour {
 
     }
     
+/*===============================
+    Collision Control
+  ===============================*/ 
     
     public void OnCollisionEnter2D(Collision2D collision)
     {

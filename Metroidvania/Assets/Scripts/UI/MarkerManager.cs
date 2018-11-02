@@ -14,14 +14,18 @@ public class MarkerManager : MonoBehaviour {
     {
         if (Instance == null)
             Instance = this;
-
-
     }
 
     void Update()
     {        
         //update player icon in real time
         playerPosOnMap(areaName);
+
+        
+        foreach (Marker mark in markers)
+        {
+            Debug.Log(mark);
+        }
     }
 
     public void RegisterMarker(Marker marker)
@@ -45,6 +49,7 @@ public class MarkerManager : MonoBehaviour {
         {
             mark.gameObject.SetActive(false);
         }
+        markers.Find("area1_cm");
         markers[0].gameObject.SetActive(true);
     }
 
@@ -69,7 +74,17 @@ public class MarkerManager : MonoBehaviour {
         markers[2].gameObject.SetActive(true);
     }
 
-    //gets the name of the player's area  and then sets their icon accordingly
+    public void setMark4()
+    {
+        foreach (Marker mark in markers)
+        {
+            mark.gameObject.SetActive(false);
+        }
+        //try to set it by name
+        markers[3].gameObject.SetActive(true);
+    }
+
+    //gets the name of the player's current area  and then sets their icon accordingly (from Player.cs, from AreaPasser.cs)
     public void playerPosOnMap(string areaName)
     {
         if (areaName == "Player In Area1") //Area 1
@@ -96,6 +111,15 @@ public class MarkerManager : MonoBehaviour {
             if(markers[2].isActiveAndEnabled == true)
             { 
                 markers[2].gameObject.SetActive(false);
+            }
+        }
+
+        if (areaName == "Player In Area4") //Area 4
+        {
+            player_icon.position = new Vector3(743, 504, 0);
+            if (markers[3].isActiveAndEnabled == true)
+            {
+                markers[3].gameObject.SetActive(false);
             }
         }
     }

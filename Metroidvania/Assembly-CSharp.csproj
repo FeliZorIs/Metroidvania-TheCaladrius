@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\Player\grapplingHook.cs" />
      <Compile Include="Assets\Scripts\Player\MiniMapMarker.cs" />
      <Compile Include="Assets\Scripts\Player\Player.cs" />
+     <Compile Include="Assets\Scripts\Trap_FallFloor.cs" />
      <Compile Include="Assets\Scripts\UI\AreaPasser.cs" />
      <Compile Include="Assets\Scripts\UI\ButtonManager_Game.cs" />
      <Compile Include="Assets\Scripts\UI\ButtonManager_Menu.cs" />
