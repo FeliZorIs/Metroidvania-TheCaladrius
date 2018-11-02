@@ -20,12 +20,6 @@ public class MarkerManager : MonoBehaviour {
     {        
         //update player icon in real time
         playerPosOnMap(areaName);
-
-        
-        foreach (Marker mark in markers)
-        {
-            Debug.Log(mark);
-        }
     }
 
     public void RegisterMarker(Marker marker)
@@ -49,7 +43,6 @@ public class MarkerManager : MonoBehaviour {
         {
             mark.gameObject.SetActive(false);
         }
-        markers.Find("area1_cm");
         markers[0].gameObject.SetActive(true);
     }
 
