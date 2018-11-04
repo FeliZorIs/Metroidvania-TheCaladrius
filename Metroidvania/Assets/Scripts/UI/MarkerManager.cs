@@ -17,9 +17,11 @@ public class MarkerManager : MonoBehaviour {
     }
 
     void Update()
-    {        
-        //update player icon in real time
-        playerPosOnMap(areaName);
+    {        //update player icon in real time
+        if (player_icon.gameObject.activeInHierarchy == false)
+            return;
+        else
+            playerPosOnMap(areaName);
     }
 
     public void RegisterMarker(Marker marker)
