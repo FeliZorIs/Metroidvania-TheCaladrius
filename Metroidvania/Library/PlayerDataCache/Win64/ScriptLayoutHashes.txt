@@ -3,12 +3,8 @@ PlayerPath?
 C:/Users/Oris/git/metroidvania/Metroidvania/TestBuild/Metroidvania.exe
 SceneListBegin?
 Assets/Scenes/Main Menu.unity
-Assets/Scenes/Test Area.unity
-Assets/Scenes/Dynamic Asset Test/GameTest.unity
 Assets/Scenes/Player.unity
-Assets/Scenes/TestScene1.unity
-Assets/Scenes/TestScene2.unity
-Assets/Scenes/TestScene3.unity
+Assets/Scenes/Levels/Area1.unity
 SceneListEnd?
 c422dd62785a6d0afa870fbd111886ce Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 7b803eb2910e9b4cd5e521ae07b9f7d6 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
@@ -190,3 +186,4 @@ e04611b8715e6833d2bd7010fc6be10b Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 93307bd34e39d73fd24e00ec39c25a91 Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 2d2bd914d65e1cf9e4af359d88a5d45b Assembly-CSharp.dll:.grapplingHook
 0fdc2f91cc4a4fb43594299931231cee Assembly-CSharp.dll:.CameraFollow
+c74aa39a64ad3d780ec9f3b79122367a Assembly-CSharp.dll:.Health_Crate

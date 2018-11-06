@@ -124,6 +124,7 @@ public class Player : MonoBehaviour {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         } 
 
+        //Jumping
         if (Input.GetKeyDown(KeyCode.Space) && grounded == true)
         {
             playerState = PlayerState.Jumping;
@@ -160,7 +161,6 @@ public class Player : MonoBehaviour {
         //when hit by enemy, sends player to hit animation
         if(collision.gameObject.tag == "Enemy")
         {
-            anim.SetBool("player_knockback", true);
             playerState = PlayerState.KnockBack;
         }
 
@@ -168,6 +168,7 @@ public class Player : MonoBehaviour {
         if (collision.gameObject.tag == "Out Of Bounds")
         {
             transform.position = landedPosition;
+            anim.SetTrigger("player_knockback");
             health -= 1;
         }
     }
