@@ -11,7 +11,7 @@ HOW TO PLAY:
 		Space:	Makes character jump, press twice for double jump
 		P:	Pauses and unpauses game. Brings up pause menu
 		ESC:	Pauses and unpauses game. Brings up pause menu
-		TAB:	Pauses and unpauses game. brings up the Map
+		TAB:	Pauses and unpauses game. Brings up the Map
 		F5:	Saves the character's current position
 		F9:	Loads the character's saved Position
 
