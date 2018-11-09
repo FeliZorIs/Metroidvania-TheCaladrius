@@ -119,22 +119,30 @@ public class Player : MonoBehaviour {
         playerState = PlayerState.Idle;        
 
         //makes you fall quicker rather than same time up, same time down
-        if (rb.velocity.y < 0) 
+        if (rb.velocity.y < 0)
         {
+            anim.SetBool("player_jump_down", true);
+            anim.SetBool("player_jump_up", false);
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        } 
+        }
+        else
+            anim.SetBool("player_jump_down", false);
+
+        //as you are up in the air
+
+
 
         //Jumping
         if (Input.GetKeyDown(KeyCode.Space) && grounded == true)
         {
+            anim.SetBool("player_jump_up", true);
             playerState = PlayerState.Jumping;
             rb.velocity = Vector2.up * jumpF;
         }
 
-        //attempt at double jump
+        //double jump
         if (grounded == false)
         {
-            
             if (Input.GetKeyDown(KeyCode.Space) && Jcount < 2)
             {
                 Jcount++;
@@ -150,9 +158,10 @@ public class Player : MonoBehaviour {
     
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        //when you touch the ground, or hit an enemy
+        //when you touch the ground
         if (collision.gameObject.tag == "Ground")
         {
+            anim.SetTrigger("player_jump_land");
             grounded = true;
             landedPosition = transform.position;
             Jcount = 0;

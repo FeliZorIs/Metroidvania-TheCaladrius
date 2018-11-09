@@ -185,5 +185,7 @@ e04611b8715e6833d2bd7010fc6be10b Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.Enemy
 93307bd34e39d73fd24e00ec39c25a91 Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 2d2bd914d65e1cf9e4af359d88a5d45b Assembly-CSharp.dll:.grapplingHook
+5d8a36a1028d9293d6705bbe86fb0f7a Assembly-CSharp.dll:.Health_Crate
 0fdc2f91cc4a4fb43594299931231cee Assembly-CSharp.dll:.CameraFollow
-c74aa39a64ad3d780ec9f3b79122367a Assembly-CSharp.dll:.Health_Crate
+6c90ace6dd9724fd7a442c9358b8c30e Assembly-CSharp.dll:.ParticlePlay
+869bd6c4a3204655703c08362ffa2259 Assembly-CSharp.dll:.Health_Pot

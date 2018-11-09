@@ -63,6 +63,8 @@
      <Compile Include="Assets\Scripts\Game and Scenes\SceneLoader.cs" />
      <Compile Include="Assets\Scripts\Game and Scenes\TestLoader.cs" />
      <Compile Include="Assets\Scripts\Items\Health_Crate.cs" />
+     <Compile Include="Assets\Scripts\Items\Health_Pot.cs" />
+     <Compile Include="Assets\Scripts\ParticlePlay.cs" />
      <Compile Include="Assets\Scripts\Player\Blast_Trajectory.cs" />
      <Compile Include="Assets\Scripts\Player\BlastPath.cs" />
      <Compile Include="Assets\Scripts\Player\CameraFollow.cs" />
