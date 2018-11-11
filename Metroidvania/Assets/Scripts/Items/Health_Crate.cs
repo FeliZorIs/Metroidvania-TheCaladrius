@@ -9,7 +9,7 @@ public class Health_Crate : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Player")
+        if (collider.gameObject.tag == "Bullet")
         {
             Instantiate(partSys, this.transform.position, Quaternion.identity);
             Instantiate(healthPot, this.transform.position, Quaternion.identity);

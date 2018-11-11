@@ -32,7 +32,8 @@ public class Player : MonoBehaviour {
     public string areaPasser;
     public GameObject MarkerManager;
 
-    Vector3 landedPosition;
+    public Transform partSys;
+    public Vector3 landedPosition;
 
     enum PlayerState
     {
@@ -128,10 +129,6 @@ public class Player : MonoBehaviour {
         else
             anim.SetBool("player_jump_down", false);
 
-        //as you are up in the air
-
-
-
         //Jumping
         if (Input.GetKeyDown(KeyCode.Space) && grounded == true)
         {
@@ -158,14 +155,15 @@ public class Player : MonoBehaviour {
     
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        //when you touch the ground
+       /* //when you touch the ground
         if (collision.gameObject.tag == "Ground")
         {
+            Instantiate(partSys, new Vector3(transform.position.x, transform.position.y - 1.8f, transform.position.z), Quaternion.identity);
             anim.SetTrigger("player_jump_land");
             grounded = true;
             landedPosition = transform.position;
             Jcount = 0;
-        }
+        }*/
 
         //when hit by enemy, sends player to hit animation
         if(collision.gameObject.tag == "Enemy")
@@ -182,14 +180,14 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public void OnCollisionExit2D(Collision2D collision)
+   /* public void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
             grounded = false;
             Jcount = 1;
         }
-    }
+    }*/
 
     //Coroutine for knockback
     public IEnumerator knockback(float knockDur, float knockbackPwr, Vector3 knockbackDir, float force)

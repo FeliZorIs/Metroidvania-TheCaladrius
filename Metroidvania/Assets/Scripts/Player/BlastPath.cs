@@ -24,12 +24,12 @@ public class BlastPath : MonoBehaviour {
                 if (sr.flipX == false)
                 {
                     bullet.GetComponent<Blast_Trajectory>().direction = Vector2.right;
-                    Instantiate(bullet, this.transform);
+                    Instantiate(bullet, new Vector3(transform.position.x + .5f, transform.position.y - .2f, transform.position.z), Quaternion.identity);
                 }
                 else
                 {
                     bullet.GetComponent<Blast_Trajectory>().direction = Vector2.left;
-                    Instantiate(bullet, this.transform);
+                    Instantiate(bullet, new Vector3(transform.position.x - .5f, transform.position.y - .2f, transform.position.z), Quaternion.identity);
                 }
             }
             else 
