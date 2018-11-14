@@ -10,6 +10,7 @@ TagManager:
   - Wall
   - Bullet
   - Box
+  - Ground_Fall
   layers:
   - Default
   - TransparentFX
