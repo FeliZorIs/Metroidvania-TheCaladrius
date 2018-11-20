@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    public List<Enemy> enemies;
+    public List<Enemy> EnemiesInTotal;
+    public List<Enemy> enemiesOnMap;
     public static EnemyManager Instance { get; private set; }
 
     void Start()
@@ -15,11 +16,11 @@ public class EnemyManager : MonoBehaviour
 
     public void RegisterEnemy(Enemy enemy)
     {
-        enemies.Add(enemy);
+        enemiesOnMap.Add(enemy);
     }
 
     public void DeregisterEnemy(Enemy enemy)
     {
-        enemies.Remove(enemy);
+        enemiesOnMap.Remove(enemy);
     }
 }

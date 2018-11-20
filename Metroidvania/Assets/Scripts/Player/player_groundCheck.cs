@@ -17,7 +17,7 @@ public class player_groundCheck : MonoBehaviour
 	
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Ground")
+        if (collider.gameObject.tag == "Ground" || collider.gameObject.tag == "Ground_Fall")
         {
             Instantiate(partSys, new Vector3(transform.position.x, transform.position.y - 1.8f, transform.position.z), Quaternion.identity);
             anim.SetTrigger("player_jump_land");
