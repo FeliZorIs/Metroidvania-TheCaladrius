@@ -1,4 +1,7 @@
 sceneSetups:
-- path: Assets/Scenes/Levels/Area5.unity
+- path: Assets/Scenes/Levels/Area7.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/Scenes/Player.unity
+  isLoaded: 1
+  isActive: 0

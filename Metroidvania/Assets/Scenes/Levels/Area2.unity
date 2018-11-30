@@ -597,7 +597,7 @@ GameObject:
   - component: {fileID: 710895852}
   - component: {fileID: 710895851}
   m_Layer: 0
-  m_Name: Ground/Platform
+  m_Name: Ground/Platform 2
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4215,7 +4215,7 @@ Tilemap:
   - first: {x: 219, y: 21, z: 0}
     second:
       m_TileIndex: 31
-      m_TileSpriteIndex: 31
+      m_TileSpriteIndex: 36
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -5233,18 +5233,18 @@ Tilemap:
     m_Data: {fileID: 21300126, guid: b2ee4d081ce7e5b4180117d0bfcb004e, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 21300158, guid: b2ee4d081ce7e5b4180117d0bfcb004e, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 492
     m_Data:
@@ -6062,7 +6062,7 @@ GameObject:
   - component: {fileID: 1778209816}
   - component: {fileID: 1778209815}
   m_Layer: 0
-  m_Name: Extra/Foliage
+  m_Name: Extra/Foliage 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
