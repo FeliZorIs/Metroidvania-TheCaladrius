@@ -53,7 +53,6 @@ public class Player : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        MaxJump = 2;
 	}
 
 	void Update () 
@@ -95,7 +94,7 @@ public class Player : MonoBehaviour {
         playerState = PlayerState.Idle;
         anim.SetBool("player_run", false);
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A)) // move left
         {
             sr.flipX = true;
             anim.SetBool("player_run", true);
@@ -105,7 +104,7 @@ public class Player : MonoBehaviour {
             transform.Translate(direction * tempSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D)) // move right
         {
             sr.flipX = false;
             anim.SetBool("player_run", true);

@@ -53,8 +53,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\CameraForTest.cs" />
      <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
+     <Compile Include="Assets\Scripts\Enemies\Enemy_Bullet.cs" />
      <Compile Include="Assets\Scripts\Enemies\Enemy_Grunt.cs" />
+     <Compile Include="Assets\Scripts\Enemies\Enemy_Shooter.cs" />
      <Compile Include="Assets\Scripts\Enemies\EnemyManager.cs" />
      <Compile Include="Assets\Scripts\Environment\Trap_FallFloor.cs" />
      <Compile Include="Assets\Scripts\Game and Scenes\GameController.cs" />
