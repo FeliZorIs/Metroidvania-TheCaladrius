@@ -15,9 +15,7 @@ public class Trap_FallFloor : MonoBehaviour
         if(collider.gameObject.tag == "Player")
             if (touched == false)
             {
-                Debug.Log(touched);
                 StartCoroutine(collapse());
-                Debug.Log(touched);
             }
     }
 

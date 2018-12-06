@@ -54,4 +54,5 @@ MonoBehaviour:
   EnemiesInTotal:
   - {fileID: 114681320676735008, guid: 33e3b874d46ccb74e8fa48f34dd1fbcd, type: 2}
   - {fileID: 114307434579403086, guid: 4cb348fdf3e222a41ac47ed7db30c6c1, type: 2}
+  - {fileID: 114476517132599428, guid: 5587d8eacca0c0f46a73c01e47a78e12, type: 2}
   enemiesOnMap: []

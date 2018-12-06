@@ -7,10 +7,16 @@ public class Enemy_Shooter : MonoBehaviour{
     public GameObject   player;
     public GameObject   bullet;
     float               waitTime;
-
+    public bool         playerInRange;
 
     Animator            anim;
     SpriteRenderer      sr;
+
+    enum EnemyState
+    {
+        Idle,
+        Attacking
+    }; EnemyState enemyState;
 
     void Start()
     {
@@ -26,19 +32,37 @@ public class Enemy_Shooter : MonoBehaviour{
             sr.flipX = true;
         else if (relativePoint.x > 0.0) //Player is to the right
             sr.flipX = false;
+
+        switch (enemyState)
+        { 
+            case EnemyState.Idle:
+                break;
+            case EnemyState.Attacking:
+                break;
+        }
     }
 
 
     //What to do when the player is in Range
     void OnTriggerEnter2D(Collider2D collider)
     {
+
         if (collider.gameObject.tag == "Player")
         {
+            enemyState = EnemyState.Attacking;
             StartCoroutine(Shooting());
         }
         else //just stand there if the player isnt within range
         {
             anim.SetBool("isAttacking", false);
+            return;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "Player")
+        {
             return;
         }
     }

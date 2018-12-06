@@ -10,6 +10,8 @@ public class Enemy_Bullet : MonoBehaviour {
     Vector3             targetPos;
     Vector3             direction;
 
+    float               angle;
+    Quaternion          rotation;
 	// Use this for initialization
 	void Start () 
     {
@@ -17,11 +19,13 @@ public class Enemy_Bullet : MonoBehaviour {
         targetPos = player.transform.position;
 
         direction = targetPos - transform.position;
+
+       
 	}
 	
 	// Update is called once per frame
 	void Update () 
-    {
+    {      
         Debug.DrawRay(this.transform.position, direction);
         transform.Translate(direction * speed * Time.deltaTime);
 	}
