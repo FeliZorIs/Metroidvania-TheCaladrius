@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class CameraForTest : MonoBehaviour {
 
+    GameObject      camera;
     public float    speed;
     float           tempSpeed;
     float           doubleSpeed;
 	// Use this for initialization
 	void Start () 
     {
+        camera = transform.GetChild(0).gameObject;
         tempSpeed = speed;
         doubleSpeed = speed * 2;
 	}
@@ -45,11 +47,11 @@ public class CameraForTest : MonoBehaviour {
 
     	if(Input.GetKey(KeyCode.Q))
         {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            camera.transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
 		if(Input.GetKey(KeyCode.E))
         {
-            transform.Translate(Vector3.back * speed * Time.deltaTime);
+            camera.transform.Translate(Vector3.back * speed * Time.deltaTime);
         }
 	}
 }

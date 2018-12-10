@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Shooter : MonoBehaviour{
+public class Enemy_Shooter : Enemy{
     
     public GameObject   player;
     public GameObject   bullet;
     float               waitTime;
     public bool         playerInRange;
+
+    float               time;
+    public float        nextAction;
 
     Animator            anim;
     SpriteRenderer      sr;
@@ -23,6 +26,8 @@ public class Enemy_Shooter : MonoBehaviour{
         player = GameObject.FindGameObjectWithTag("Player");
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+
+        time = 0;
     }
 
     void Update()
@@ -38,6 +43,12 @@ public class Enemy_Shooter : MonoBehaviour{
             case EnemyState.Idle:
                 break;
             case EnemyState.Attacking:
+                time += Time.deltaTime;
+                if (time >= nextAction)
+                {
+                    StartCoroutine(Shooting());
+                    time = 0;
+                }
                 break;
         }
     }
@@ -50,12 +61,6 @@ public class Enemy_Shooter : MonoBehaviour{
         if (collider.gameObject.tag == "Player")
         {
             enemyState = EnemyState.Attacking;
-            StartCoroutine(Shooting());
-        }
-        else //just stand there if the player isnt within range
-        {
-            anim.SetBool("isAttacking", false);
-            return;
         }
     }
 
@@ -63,7 +68,7 @@ public class Enemy_Shooter : MonoBehaviour{
     {
         if (collider.gameObject.tag == "Player")
         {
-            return;
+            enemyState = EnemyState.Idle;
         }
     }
 
@@ -78,7 +83,6 @@ public class Enemy_Shooter : MonoBehaviour{
             anim.SetBool("isAttacking", false);
 
             yield return new WaitForSeconds(2f);
-            StartCoroutine(Shooting());
         }
         else
         {
@@ -88,7 +92,6 @@ public class Enemy_Shooter : MonoBehaviour{
             anim.SetBool("isAttacking", false);
 
             yield return new WaitForSeconds(2f);
-            StartCoroutine(Shooting());
         }
     }     
 }

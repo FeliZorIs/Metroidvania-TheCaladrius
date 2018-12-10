@@ -5,36 +5,39 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     
-    Rigidbody2D rb;
-    SpriteRenderer sr;
-    Animator anim;
+    Rigidbody2D                 rb;
+    SpriteRenderer              sr;
+    Animator                    anim;
 
-    public bool grounded;
+    public bool                 grounded;
 
-    public float speed;
-    public float jumpF;
+    public float                speed;
+    public float                jumpF;
 
-    public int Jcount = 0;
-    public int MaxJump;
-    public float health;
+    public int                  Jcount = 0;
+    public int                  MaxJump;
+    public float                health;
 
-    public float fallMultiplier = 2.5f;
-    public float lowJumpMultiplier = 2f;
+    public float                fallMultiplier = 2.5f;
+    public float                lowJumpMultiplier = 2f;
 
-    private float tempSpeed;
-    private Vector2 direction;
+    private float               tempSpeed;
+    private Vector2             direction;
 
     //knockback
-    public float knockDur;
-    public float knockbackPwr;
-    public float knockbackForce;
+    public float                knockDur;
+    public float                knockbackPwr;
+    public float                knockbackForce;
 
     //send this to ManagerMarker
-    public string areaPasser;
-    public GameObject MarkerManager;
+    public string               areaPasser;
+    public GameObject           MarkerManager;
 
-    public Transform partSys;
-    public Vector3 landedPosition;
+    //Sends this to the save function when called. Retrieved by AreaPasser
+    public int                  buildIndex;
+
+    public Transform            partSys;
+    public Vector3              landedPosition;
 
     enum PlayerState
     {
@@ -55,11 +58,11 @@ public class Player : MonoBehaviour {
         anim = GetComponent<Animator>();
 	}
 
-	void Update () 
+	void FixedUpdate () 
     {
-        //sends the name of the current area to the MarkerManager
+        //sends the name of the current area to the MarkerManager. Retrieved by AreaPasser
         MarkerManager.GetComponent<MarkerManager>().areaName = areaPasser;
-
+        
         switch (playerState)
         { 
             case PlayerState.Idle:

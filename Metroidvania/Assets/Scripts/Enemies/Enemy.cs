@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
-	// Use this for initialization
+    public int health;
+    public bool isDead = false;
+
 	void Start () 
     {
         EnemyManager.Instance.RegisterEnemy(this);		
