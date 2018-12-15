@@ -27,6 +27,7 @@ public class PlayerSave : MonoBehaviour {
             GameController.gameController.playerPositionX = transform.position.x;
             GameController.gameController.playerPositionY = transform.position.y;
             GameController.gameController.playerPositionZ = transform.position.z;
+            GameController.gameController.SceneIndex = transform.GetComponent<Player>().buildIndex;
             GameController.gameController.save();
         }
 
@@ -42,7 +43,7 @@ public class PlayerSave : MonoBehaviour {
         transform.position = new Vector3
         (
             GameController.gameController.playerPositionX,
-            GameController.gameController.playerPositionY,
+            GameController.gameController.playerPositionY + 2,
             GameController.gameController.playerPositionZ
         );
     }

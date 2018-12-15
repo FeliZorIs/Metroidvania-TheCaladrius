@@ -225,4 +225,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_icon: {fileID: 0}
   areaName: 
-  markers: []
+  markers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

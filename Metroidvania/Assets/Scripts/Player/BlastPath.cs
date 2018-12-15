@@ -19,7 +19,7 @@ public class BlastPath : MonoBehaviour {
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (bm.GetComponent<ButtonManager_Game>().isPaused == false)
+            if (bm.GetComponent<ButtonManager_Game>().isPaused == false && bm.GetComponent<ButtonManager_Game>().openMap == false)
             {
                 if (sr.flipX == false)
                 {

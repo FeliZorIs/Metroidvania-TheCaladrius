@@ -53,7 +53,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\justmove.cs" />
      <Compile Include="Assets\Scripts\CameraForTest.cs" />
      <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
      <Compile Include="Assets\Scripts\Enemies\Enemy_Grunt.cs" />

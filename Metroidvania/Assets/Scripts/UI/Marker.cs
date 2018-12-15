@@ -7,7 +7,6 @@ public class Marker : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-        MarkerManager.Instance.RegisterMarker(this);
         this.gameObject.SetActive(false);
 	}
 

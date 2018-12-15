@@ -39,6 +39,9 @@ public class Player : MonoBehaviour {
     public Transform            partSys;
     public Vector3              landedPosition;
 
+    //if loaded by main menu, this becomes true
+    public bool                 loadedFromMainMenu = false;
+
     enum PlayerState
     {
         Idle,
@@ -56,6 +59,10 @@ public class Player : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+
+        transform.position = new Vector3(GameController.gameController.playerPositionX,
+            GameController.gameController.playerPositionY + 2,
+            GameController.gameController.playerPositionZ);
 	}
 
 	void FixedUpdate () 

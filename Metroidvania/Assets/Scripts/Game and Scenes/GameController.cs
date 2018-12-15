@@ -8,14 +8,15 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour 
 {
-    public static GameController gameController;
+    public static GameController    gameController;
+    public Scene                    currentScene;
+    public int                      currentSceneIndex;
+    public bool                     dataDeleted = true;
 
-    public float playerPositionX;
-    public float playerPositionY;
-    public float playerPositionZ;
-
-    Scene currentScene;
-    public int SceneIndex;
+    public float                    playerPositionX;
+    public float                    playerPositionY;
+    public float                    playerPositionZ;
+    public int                      SceneIndex;
 
 
 	// Use this for initialization
@@ -33,20 +34,26 @@ public class GameController : MonoBehaviour
         }
 	}
 
+    void Update()
+    {
+        currentScene = SceneManager.GetSceneByBuildIndex(currentSceneIndex);
+    }
+
     public void save()
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
+        dataDeleted = false;
 
         PlayerData data = new PlayerData();
         data.playerPosX = playerPositionX;
         data.playerPosY = playerPositionY;
         data.playerPosZ = playerPositionZ;
-        data.sceneIndex = currentScene.buildIndex;
+        data.sceneIndex = SceneIndex;
 
         bf.Serialize(file, data);
         file.Close();
-        Debug.Log(currentScene.buildIndex);
+        Debug.Log(SceneIndex);
     }
 
     public void load()
@@ -59,23 +66,28 @@ public class GameController : MonoBehaviour
             PlayerData data = (PlayerData)bf.Deserialize(file);
             file.Close();
 
-            //SceneManager.LoadScene(data.sceneIndex);
+            if (!(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(data.sceneIndex)))
+                SceneManager.UnloadScene(currentSceneIndex);
+
+            if (!(SceneManager.GetSceneByName("Player").isLoaded))
+                SceneManager.LoadScene("Player", LoadSceneMode.Additive);
+
+            SceneManager.LoadScene(data.sceneIndex, LoadSceneMode.Additive);
             playerPositionX = data.playerPosX;
             playerPositionY = data.playerPosY;
-            playerPositionZ = data.playerPosZ;           
-        }
+            playerPositionZ = data.playerPosZ;
+            SceneIndex = data.sceneIndex;
+        }            
     }
 
     public void Delete()
     {
         if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        {
             File.Delete(Application.persistentDataPath + "/playerInfo.dat");
+            dataDeleted = true;
+        }
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
 
 [Serializable]

@@ -14,6 +14,7 @@ public class AreaPasser : MonoBehaviour {
         {
             collider.GetComponent<Player>().areaPasser = passToPlayer;
             collider.GetComponent<Player>().buildIndex = passIndex;
+            GameObject.Find("Managers/GameManager").gameObject.GetComponent<GameController>().currentSceneIndex = passIndex;
         }
     }
 }
