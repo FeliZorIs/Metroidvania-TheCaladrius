@@ -387,7 +387,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1126044952}
+      - m_Target: {fileID: 0}
         m_MethodName: loadGame
         m_Mode: 1
         m_Arguments:
@@ -510,7 +510,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1126044952}
+      - m_Target: {fileID: 0}
         m_MethodName: exitGame
         m_Mode: 1
         m_Arguments:
@@ -936,8 +936,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1126044953}
-  - component: {fileID: 1126044952}
   - component: {fileID: 1126044954}
+  - component: {fileID: 1126044952}
   m_Layer: 0
   m_Name: Button/Save Manager
   m_TagString: Untagged
@@ -981,6 +981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSceneIndex: 0
+  dataDeleted: 1
   playerPositionX: 0
   playerPositionY: 0
   playerPositionZ: 0

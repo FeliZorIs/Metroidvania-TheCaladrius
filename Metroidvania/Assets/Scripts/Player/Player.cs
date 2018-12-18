@@ -42,6 +42,10 @@ public class Player : MonoBehaviour {
     //if loaded by main menu, this becomes true
     public bool                 loadedFromMainMenu = false;
 
+    //timer for the attack
+    float                       attackTime;
+    bool                        startTimer = false;
+
     enum PlayerState
     {
         Idle,
@@ -59,11 +63,18 @@ public class Player : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-
-        transform.position = new Vector3(GameController.gameController.playerPositionX,
-            GameController.gameController.playerPositionY + 2,
-            GameController.gameController.playerPositionZ);
-	}
+        attackTime = 0;
+/*
+        if (ButtonManager_Menu.loaded != false)
+            transform.position = new Vector3(GameController.gameController.playerPositionX,
+                GameController.gameController.playerPositionY + 2,
+                GameController.gameController.playerPositionZ);
+        else
+        {
+            ButtonManager_Menu.newGame2 = false;
+            transform.position = new Vector3(0, 2, 0);
+        }*/
+    }
 
 	void FixedUpdate () 
     {
@@ -93,6 +104,24 @@ public class Player : MonoBehaviour {
                 anim.SetTrigger("player_knockback");
                 playerState = PlayerState.Idle;
                 break;
+        }
+
+        //ATTACK
+        if (Input.GetKeyDown(KeyCode.K) && attackTime == 0)
+        {
+            transform.GetChild(1).GetComponent<BlastPath>().fireblaster();
+            anim.SetTrigger("player_fight");
+            startTimer = true;
+        }
+
+        if (startTimer == true)
+        {
+            attackTime += Time.deltaTime;
+            if (attackTime >= .25f)
+            {
+                attackTime = 0;
+                startTimer = false;                
+            }               
         }
 	}
 
@@ -154,15 +183,17 @@ public class Player : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Space) && Jcount < MaxJump)
             {
                 Jcount++;
+                if (Jcount >= 3)
+                    anim.SetTrigger("player_jump_double");
                 rb.velocity = Vector2.up * jumpF;
             }
         }
 
     }
     
-/*===============================
-    Collision Control
-  ===============================*/ 
+//==============================================
+//                Collision Control
+//============================================== 
     
     public void OnCollisionEnter2D(Collision2D collision)
     {
@@ -182,7 +213,27 @@ public class Player : MonoBehaviour {
         }
     }
 
-    //Coroutine for knockback
+    void OnTriggerStay2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "BossArea1")
+        {
+            GetComponentInChildren<CameraFollow>().inBossArea1 = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "BossArea1")
+        {
+            GetComponentInChildren<CameraFollow>().inBossArea1 = false;
+        }
+    }
+
+//================================================
+//                  Coroutines
+//================================================
+
+    //knockback
     public IEnumerator knockback(float knockDur, float knockbackPwr, Vector3 knockbackDir, float force)
     {
         

@@ -13,29 +13,27 @@ public class BlastPath : MonoBehaviour {
         sr = GetComponentInParent<SpriteRenderer>();
         bm = GameObject.Find("/Managers/ButtonManager");
 	}
-	
-	// Update is called once per frame
-	void Update () 
-    {
-        if (Input.GetMouseButtonDown(0))
+
+    public void fireblaster() 
+    { 
+        if (bm.GetComponent<ButtonManager_Game>().isPaused == false && bm.GetComponent<ButtonManager_Game>().openMap == false)
         {
-            if (bm.GetComponent<ButtonManager_Game>().isPaused == false && bm.GetComponent<ButtonManager_Game>().openMap == false)
+            if (sr.flipX == false)
             {
-                if (sr.flipX == false)
-                {
-                    bullet.GetComponent<Blast_Trajectory>().direction = Vector2.right;
-                    Instantiate(bullet, new Vector3(transform.position.x + .5f, transform.position.y - .2f, transform.position.z), Quaternion.identity);
-                }
-                else
-                {
-                    bullet.GetComponent<Blast_Trajectory>().direction = Vector2.left;
-                    Instantiate(bullet, new Vector3(transform.position.x - .5f, transform.position.y - .2f, transform.position.z), Quaternion.identity);
-                }
+                bullet.GetComponent<Blast_Trajectory>().direction = Vector2.right;
+                bullet.GetComponent<SpriteRenderer>().flipX = false;
+                Instantiate(bullet, new Vector3(transform.position.x + .75f, transform.position.y - .2f, transform.position.z), Quaternion.identity);
             }
-            else 
+            else
             {
-                return;
+                bullet.GetComponent<Blast_Trajectory>().direction = Vector2.left;
+                bullet.GetComponent<SpriteRenderer>().flipX = true;
+                Instantiate(bullet, new Vector3(transform.position.x - .75f, transform.position.y - .2f, transform.position.z), Quaternion.identity);
             }
         }
-	}
+        else 
+        {
+            return;
+        }        
+    }
 }

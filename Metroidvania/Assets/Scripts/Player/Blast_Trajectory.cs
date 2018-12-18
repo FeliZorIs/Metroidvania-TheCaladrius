@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Blast_Trajectory : MonoBehaviour {
 
-    public Vector3 direction;
-    public float speed;
-    public GameObject bulletCrash;
-    float timer;
-    public float ttk;
+    public Vector3      direction;
+    public float        speed;
+    public GameObject   bulletCrash;
+    float               timer;
+    public float        ttk;
+
+    public GameObject   parent;
+    SpriteRenderer      parentSR;
+    SpriteRenderer      sr;
 
 	// Use this for initialization
 	void Start () 
