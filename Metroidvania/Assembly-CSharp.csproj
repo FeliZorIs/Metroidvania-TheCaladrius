@@ -54,8 +54,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Prefabs\Shaders\NegativeScreen.cs" />
-     <Compile Include="Assets\Scripts\Boss2Alive.cs" />
      <Compile Include="Assets\Scripts\BossArea1.cs" />
+     <Compile Include="Assets\Scripts\BossArea2.cs" />
      <Compile Include="Assets\Scripts\CameraForTest.cs" />
      <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
      <Compile Include="Assets\Scripts\Enemies\Enemy_Grunt.cs" />
@@ -63,7 +63,8 @@
      <Compile Include="Assets\Scripts\Enemies\EnemyManager.cs" />
      <Compile Include="Assets\Scripts\Enemies\Lycanthropy\Lycan_HealthUI.cs" />
      <Compile Include="Assets\Scripts\Enemies\Lycanthropy\Lycanthrope.cs" />
-     <Compile Include="Assets\Scripts\Enemies\PowerIncontinence.cs" />
+     <Compile Include="Assets\Scripts\Enemies\PowerIncontinence\PI_HealthUI.cs" />
+     <Compile Include="Assets\Scripts\Enemies\PowerIncontinence\PowerIncontinence.cs" />
      <Compile Include="Assets\Scripts\Enemies\Projectiles\Enemy_Bullet.cs" />
      <Compile Include="Assets\Scripts\Enemies\Projectiles\Enemy_FireBall.cs" />
      <Compile Include="Assets\Scripts\Enemies\Shooter\Enemy_Shooter.cs" />

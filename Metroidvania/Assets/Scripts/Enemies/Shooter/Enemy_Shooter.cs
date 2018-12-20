@@ -16,6 +16,13 @@ public class Enemy_Shooter : Enemy{
     Animator            anim;
     SpriteRenderer      sr;
 
+    public Material     originalMat;
+    public Material     whiteMat;
+
+    //particle effects
+    public Transform    explode;
+    public Transform    charging;
+
     enum EnemyState
     {
         Idle,
@@ -61,6 +68,12 @@ public class Enemy_Shooter : Enemy{
         {
             enemyState = EnemyState.Idle;
         }
+
+        if (health <= 0)
+        {
+            sr.material = originalMat;
+            StartCoroutine(Death());
+        }
     }
 
 
@@ -79,6 +92,7 @@ public class Enemy_Shooter : Enemy{
         if (sr.flipX == false)
         {
             anim.SetBool("isAttacking", true);
+            Instantiate(charging, this.transform.position + Vector3.right, Quaternion.identity);
             yield return new WaitForSeconds(1f);
             Instantiate(bullet, this.transform.position + Vector3.right, Quaternion.identity);
             anim.SetBool("isAttacking", false);
@@ -88,11 +102,28 @@ public class Enemy_Shooter : Enemy{
         else
         {
             anim.SetBool("isAttacking", true);
+            Instantiate(charging, this.transform.position + Vector3.left, Quaternion.identity);
             yield return new WaitForSeconds(1f);
             Instantiate(bullet, this.transform.position + Vector3.left, Quaternion.identity);
             anim.SetBool("isAttacking", false);
 
             yield return new WaitForSeconds(2f);
         }
-    }     
+    }
+
+    IEnumerator Death()
+    {
+        anim.SetTrigger("isDead");
+        yield return new WaitForSeconds(.5f);
+        Instantiate(explode, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
+    }
+
+    IEnumerator GotHit()
+    {
+        sr.material = whiteMat;
+        yield return new WaitForSeconds(.1f);
+        sr.material = originalMat;
+    }
+
 }

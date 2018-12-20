@@ -19,6 +19,7 @@ public class Enemy_Grunt : Enemy {
     SpriteRenderer      sr;
 
     public int          healthMe;
+    public Transform    explode;
 
     // Materials to switch to
     public Material     whiteMat;
@@ -143,6 +144,7 @@ public class Enemy_Grunt : Enemy {
     {
         anim.SetTrigger("isDead");
         yield return new WaitForSeconds(.5f);
+        Instantiate(explode, transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }
 }

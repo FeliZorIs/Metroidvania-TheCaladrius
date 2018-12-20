@@ -37,6 +37,7 @@ public class Player : MonoBehaviour {
     public int                  buildIndex;
 
     public Transform            partSys;
+    public Transform            loadIn;
     public Vector3              landedPosition;
 
     //if loaded by main menu, this becomes true
@@ -68,6 +69,7 @@ public class Player : MonoBehaviour {
         MyCamera = transform.GetChild(0).gameObject;
         MyCamera.GetComponent<NegativeScreen>().enabled = false;
         attackTime = 0;
+        Instantiate(loadIn, transform.position, Quaternion.identity);
 
 /*
         if (ButtonManager_Menu.loaded != false)

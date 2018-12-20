@@ -30,6 +30,8 @@ public class PlayerSave : MonoBehaviour {
             GameController.gameController.SceneIndex = transform.GetComponent<Player>().buildIndex;
             GameController.gameController.health = transform.GetComponent<Player>().health;
             GameController.gameController.save();
+
+            Instantiate(GetComponent<Player>().loadIn, transform.position, Quaternion.identity);
         }
 
         if (Input.GetButtonDown("Load"))
@@ -49,5 +51,11 @@ public class PlayerSave : MonoBehaviour {
         );
 
         transform.GetComponent<Player>().health = GameController.gameController.health;
+        Instantiate(GetComponent<Player>().loadIn, new Vector3
+        (
+            GameController.gameController.playerPositionX,
+            GameController.gameController.playerPositionY - .5f,
+            GameController.gameController.playerPositionZ
+        ), Quaternion.identity);
     }
 }

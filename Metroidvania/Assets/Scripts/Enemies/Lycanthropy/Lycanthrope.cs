@@ -83,15 +83,10 @@ public class Lycanthrope : MonoBehaviour {
             isDead = true;
         }
 
-        if (isDead == false)
-        {
-            Wall1.SetActive(true);
-            Wall2.SetActive(true);
-        }
-        else
+        if (isDead == true)
         {
             Wall1.SetActive(false);
-            Wall2.SetActive(true);
+            Wall2.SetActive(false);
         }
 
         //Orient itself to look in the direction of the player
