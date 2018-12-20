@@ -53,6 +53,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Prefabs\Shaders\NegativeScreen.cs" />
+     <Compile Include="Assets\Scripts\Boss2Alive.cs" />
      <Compile Include="Assets\Scripts\BossArea1.cs" />
      <Compile Include="Assets\Scripts\CameraForTest.cs" />
      <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
@@ -61,6 +63,7 @@
      <Compile Include="Assets\Scripts\Enemies\Enemy_Summoner.cs" />
      <Compile Include="Assets\Scripts\Enemies\EnemyManager.cs" />
      <Compile Include="Assets\Scripts\Enemies\Lycanthrope.cs" />
+     <Compile Include="Assets\Scripts\Enemies\PowerIncontinence.cs" />
      <Compile Include="Assets\Scripts\Enemies\Projectiles\Enemy_Bullet.cs" />
      <Compile Include="Assets\Scripts\Enemies\Projectiles\Enemy_FireBall.cs" />
      <Compile Include="Assets\Scripts\Environment\Trap_FallFloor.cs" />
@@ -83,6 +86,8 @@
      <Compile Include="Assets\Scripts\UI\Health_UI.cs" />
      <Compile Include="Assets\Scripts\UI\Marker.cs" />
      <Compile Include="Assets\Scripts\UI\MarkerManager.cs" />
+     <None Include="Assets\Prefabs\Shaders\WhiteScreen2.shader" />
+     <None Include="Assets\Prefabs\Shaders\NegativeScreen.shader" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/Oris/git/metroidvania/Metroidvania/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>

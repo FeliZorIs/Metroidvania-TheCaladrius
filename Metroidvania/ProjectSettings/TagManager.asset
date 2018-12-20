@@ -8,10 +8,11 @@ TagManager:
   - Enemy
   - Out Of Bounds
   - Wall
-  - Bullet
   - Box
   - Ground_Fall
   - BossArea1
+  - BossArea2
+  - Bullet_Player
   layers:
   - Default
   - TransparentFX

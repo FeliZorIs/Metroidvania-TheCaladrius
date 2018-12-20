@@ -28,6 +28,7 @@ public class PlayerSave : MonoBehaviour {
             GameController.gameController.playerPositionY = transform.position.y;
             GameController.gameController.playerPositionZ = transform.position.z;
             GameController.gameController.SceneIndex = transform.GetComponent<Player>().buildIndex;
+            GameController.gameController.health = transform.GetComponent<Player>().health;
             GameController.gameController.save();
         }
 
@@ -46,5 +47,7 @@ public class PlayerSave : MonoBehaviour {
             GameController.gameController.playerPositionY + 2,
             GameController.gameController.playerPositionZ
         );
+
+        transform.GetComponent<Player>().health = GameController.gameController.health;
     }
 }

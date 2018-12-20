@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     public float                    playerPositionY;
     public float                    playerPositionZ;
     public int                      SceneIndex;
+    public float                      health;
 
 
 	// Use this for initialization
@@ -50,6 +51,7 @@ public class GameController : MonoBehaviour
         data.playerPosY = playerPositionY;
         data.playerPosZ = playerPositionZ;
         data.sceneIndex = SceneIndex;
+        data.health = health;
 
         bf.Serialize(file, data);
         file.Close();
@@ -67,15 +69,22 @@ public class GameController : MonoBehaviour
             file.Close();
 
             if (!(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(data.sceneIndex)))
+            {
                 SceneManager.UnloadScene(currentSceneIndex);
+                SceneManager.LoadScene(data.sceneIndex, LoadSceneMode.Additive);
+            }
+            else
+                return;
 
-            if (!(SceneManager.GetSceneByName("Player").isLoaded))
-                SceneManager.LoadScene("Player", LoadSceneMode.Additive);
 
-            SceneManager.LoadScene(data.sceneIndex, LoadSceneMode.Additive);
+                if (!(SceneManager.GetSceneByName("Player").isLoaded))
+                    SceneManager.LoadScene("Player", LoadSceneMode.Additive);
+
+            //SceneManager.LoadScene(data.sceneIndex, LoadSceneMode.Additive);
             playerPositionX = data.playerPosX;
             playerPositionY = data.playerPosY;
             playerPositionZ = data.playerPosZ;
+            health = data.health;
             SceneIndex = data.sceneIndex;
         }            
     }
@@ -97,4 +106,5 @@ class PlayerData
     public float playerPosY;
     public float playerPosZ;
     public int sceneIndex;
+    public float health;
 }

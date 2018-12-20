@@ -5,18 +5,24 @@ using UnityEngine;
 
 public class Enemy_Grunt : Enemy {
 
-    public float    speed;
-    public float    waitTime;
-    public float    distance;
+    public float        speed;
+    public float        waitTime;
+    public float        distance;
 
-    float           tempSpeed;
+    float               tempSpeed;
 
-    Vector2         startPosition;
-    float           distanceTraveled;
-    Vector2         currentPos;
+    Vector2             startPosition;
+    float               distanceTraveled;
+    Vector2             currentPos;
 
-    Animator        anim;
-    SpriteRenderer  sr;
+    Animator            anim;
+    SpriteRenderer      sr;
+
+    public int          healthMe;
+
+    // Materials to switch to
+    public Material     whiteMat;
+    public Material     originalMat;
 
     enum EnemyState
     {
@@ -42,8 +48,7 @@ public class Enemy_Grunt : Enemy {
 	// Update is called once per frame
 	void Update () 
     {
-        currentPos = this.transform.position;
-        
+        currentPos = this.transform.position;        
         distanceTraveled = Vector2.Distance(startPosition, currentPos);
 
         switch (enemyState)
@@ -79,17 +84,30 @@ public class Enemy_Grunt : Enemy {
         }
 	}
 
-
+//==================================================
+//               Collision Detection
+//==================================================
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")       //if i hit the player
         {
             collision.gameObject.GetComponent<Player>().health -= 1;
         }
+
+        if (collision.gameObject.tag == "Bullet_Player")  //if I'M hit by the player attack
+        {
+            healthMe -= 1;
+            Debug.Log("health: " + healthMe);
+            StartCoroutine(GotHit());
+        }
     }
 
-    IEnumerator holdingLeft()
+//==================================================
+//                   Coroutines
+//==================================================
+
+    IEnumerator holdingLeft() 
     {
         tempSpeed = 0;
         anim.SetBool("isMoving", false);
@@ -107,5 +125,12 @@ public class Enemy_Grunt : Enemy {
         yield return new WaitForSeconds(waitTime);
         startPosition = this.transform.position;
         enemyState = EnemyState.MovingLeft;
+    }
+
+    IEnumerator GotHit()
+    {
+        sr.material = whiteMat;
+        yield return new WaitForSeconds(1f);
+        sr.material = originalMat;
     }
 }

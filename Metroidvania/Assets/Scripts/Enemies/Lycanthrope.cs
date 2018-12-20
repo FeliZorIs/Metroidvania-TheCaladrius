@@ -7,7 +7,6 @@ public class Lycanthrope : MonoBehaviour {
     //things needed to function
     public GameObject           player;
     public Animator             anim;
-    public Animation            animation;
     public SpriteRenderer       sr;
 
     //checks to see if the player was on the left or the right
@@ -21,7 +20,7 @@ public class Lycanthrope : MonoBehaviour {
     public float                nextAction;
     float                       newNextAction;
     float                       timer = 0;
-    int                         markovNum;
+    float                       markovNum;
 
     //delay to throw rock or to charge at player 
     public float                rockDelay;
@@ -32,6 +31,7 @@ public class Lycanthrope : MonoBehaviour {
 
     //movement speed for walking towards the player
     public float                speed;
+    float                       tempSpeed;
     bool                        moving = false;
     bool                        charging = false;
 
@@ -54,6 +54,7 @@ public class Lycanthrope : MonoBehaviour {
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         bossState = BossState.Idle;
+        tempSpeed = speed;
 
         //this will be turned true when passed from BossArea1.cs Script
         PlayerInZone = false;
@@ -77,7 +78,6 @@ public class Lycanthrope : MonoBehaviour {
         { 
             case BossState.Idle:
                 if (PlayerInZone == true)
-                    anim.SetTrigger("lycan_nextStage");
                     bossState = BossState.Stage1;
                 break;
 
@@ -99,7 +99,7 @@ public class Lycanthrope : MonoBehaviour {
                     if (markovNum > 40 && markovNum <= 80)  //SwipePlayer
                         StartCoroutine(SwipePlayer());
 
-                    if (markovNum > 80 && markovNum <= 100)   //MoveToPlayer
+                    if (markovNum > 80 && markovNum <= 100) //MoveToPlayer
                         StartCoroutine(MoveToPlayer());
 
                     //Returns timer to 0
@@ -108,20 +108,54 @@ public class Lycanthrope : MonoBehaviour {
                 break;
 
             case BossState.Stage2:
-                newNextAction = nextAction;
+                newNextAction = nextAction * .66f;
                 timer += Time.deltaTime;
                 if (timer >= newNextAction)
                 {
                     markovNum = Random.Range(0, 100);
+                    if (markovNum <= 2.5f)                      //DoNothing
+                        StartCoroutine(DoNothing());
+
+                    if (markovNum > 2.5f && markovNum <= 22.5f) //Charge
+                        StartCoroutine(Charge());
+
+                    if (markovNum > 22.5 && markovNum <= 42.5f) //ThrowRock
+                        StartCoroutine(ThrowRock());
+
+                    if (markovNum > 42.5f && markovNum <= 85)   //SwipePlayer
+                        StartCoroutine(SwipePlayer());
+
+                    if (markovNum > 85 && markovNum <= 100)     //MoveToPlayer
+                        StartCoroutine(MoveToPlayer());
+
+                    //Returns timer to 0
+                    timer = 0;
                 }
                 break;
 
             case BossState.Stage3:
-                newNextAction = nextAction;
+                newNextAction = nextAction * .33f;
                 timer += Time.deltaTime;
                 if (timer >= newNextAction)
                 {
                     markovNum = Random.Range(0, 100);
+                    if (markovNum <= -1)                    //DoNothing
+                        StartCoroutine(DoNothing());
+
+                    if (markovNum > 0 && markovNum <= 20)   //Charge
+                        StartCoroutine(Charge());
+
+                    if (markovNum > 20 && markovNum <= 45)  //ThrowRock
+                        StartCoroutine(ThrowRock());
+
+                    if (markovNum > 45 && markovNum <= 90)  //SwipePlayer
+                        StartCoroutine(SwipePlayer());
+
+                    if (markovNum > 90 && markovNum <= 100) //MoveToPlayer
+                        StartCoroutine(MoveToPlayer());
+
+                    //Returns timer to 0
+                    timer = 0;
                 }
                 break;
 
@@ -134,12 +168,14 @@ public class Lycanthrope : MonoBehaviour {
         if (moving == true)
         {
             if (sr.flipX == false) //player is to the left
-                transform.Translate(Vector2.left * speed * Time.deltaTime);
+                transform.Translate(Vector2.left * tempSpeed * Time.deltaTime);
             else                   //player is to the right
-                transform.Translate(Vector2.right * speed * Time.deltaTime);
+                transform.Translate(Vector2.right * tempSpeed * Time.deltaTime);
         }
         else
-            return; 
+            return;
+
+        Debug.Log(bossState.ToString());
 	}
 
 //==============================================
@@ -151,6 +187,13 @@ public class Lycanthrope : MonoBehaviour {
     {
         Debug.Log("MoveToPlayer");
         anim.SetBool("lycan_move", true);
+
+        if (distanceFromPlayer <= 5.5f)
+        {
+            StartCoroutine(SwipePlayer());
+            StopCoroutine(MoveToPlayer());
+        }
+
         moving = true;
         /*if (distanceFromPlayer >= 5.5f)
         {
@@ -205,6 +248,8 @@ public class Lycanthrope : MonoBehaviour {
     {
         Debug.Log("Charge");
         anim.SetBool("lycan_move", true);
+        tempSpeed = speed * 3;
+        yield return new WaitForSeconds(chargeDelay);
         moving = true;
         /*if (sr.flipX == false) //player is to the left
             transform.Translate(Vector2.left * (speed*3) * Time.deltaTime);
@@ -214,6 +259,7 @@ public class Lycanthrope : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         anim.SetBool("lycan_move", false);
         moving = false;
+        tempSpeed = speed;
     }
 
 

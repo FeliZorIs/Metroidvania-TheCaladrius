@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    
+    public GameObject           MyCamera;
     Rigidbody2D                 rb;
     SpriteRenderer              sr;
     Animator                    anim;
@@ -63,7 +63,10 @@ public class Player : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        MyCamera = transform.GetChild(0).gameObject;
+        MyCamera.GetComponent<NegativeScreen>().enabled = false;
         attackTime = 0;
+
 /*
         if (ButtonManager_Menu.loaded != false)
             transform.position = new Vector3(GameController.gameController.playerPositionX,
@@ -122,6 +125,12 @@ public class Player : MonoBehaviour {
                 attackTime = 0;
                 startTimer = false;                
             }               
+        }
+
+        //things that happen when you die
+        if (health <= 0)
+        {
+            MyCamera.GetComponent<NegativeScreen>().enabled = true;
         }
 	}
 
@@ -215,17 +224,27 @@ public class Player : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "BossArea1")
+        if (collider.gameObject.tag == "BossArea1") //when i enter a boss area, changes the position of the camera;
         {
             GetComponentInChildren<CameraFollow>().inBossArea1 = true;
+        }
+
+        if (collider.gameObject.tag == "BossArea2")
+        {
+            GetComponentInChildren<CameraFollow>().inBossArea2 = true;
         }
     }
 
     void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "BossArea1")
+        if (collider.gameObject.tag == "BossArea1") //when i leave a boss area, returns the camera back to normal
         {
             GetComponentInChildren<CameraFollow>().inBossArea1 = false;
+        }
+
+        if (collider.gameObject.tag == "BossArea2")
+        {
+            GetComponentInChildren<CameraFollow>().inBossArea2 = false;
         }
     }
 
