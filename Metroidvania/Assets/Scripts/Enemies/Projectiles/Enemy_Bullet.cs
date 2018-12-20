@@ -9,6 +9,7 @@ public class Enemy_Bullet : MonoBehaviour {
 
     Vector3             targetPos;
     Vector3             direction;
+    public Transform    bulletCrash;
 
     float               angle;
     Quaternion          rotation;
@@ -29,4 +30,20 @@ public class Enemy_Bullet : MonoBehaviour {
         Debug.DrawRay(this.transform.position, direction);
         transform.Translate(direction * speed * Time.deltaTime);
 	}
+
+    void OnCollisionEnter2D(Collision2D collider)
+    {
+        if (collider.gameObject.tag == "Player")
+        {
+            collider.gameObject.GetComponent<Player>().health -= 1;
+            Instantiate(bulletCrash, this.transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+
+        if (collider.gameObject.tag == "Ground")
+        {
+            Instantiate(bulletCrash, this.transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+    }
 }

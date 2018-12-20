@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 61037743892893326}
   m_Layer: 0
   m_Name: Enemy_Blast
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -120,6 +120,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   player: {fileID: 0}
+  bulletCrash: {fileID: 4772583848273808, guid: 1b1d81ab0d454cc4f9fe23b58daa1a1e,
+    type: 2}
 --- !u!212 &212361456018168348
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -82,6 +82,11 @@ public class Enemy_Grunt : Enemy {
                 StartCoroutine(holdingRight());
                 break;
         }
+        if (healthMe <= 0)
+        {
+            sr.material = originalMat;
+            StartCoroutine(Death());
+        }
 	}
 
 //==================================================
@@ -130,7 +135,14 @@ public class Enemy_Grunt : Enemy {
     IEnumerator GotHit()
     {
         sr.material = whiteMat;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.1f);
         sr.material = originalMat;
+    }
+
+    IEnumerator Death()
+    {
+        anim.SetTrigger("isDead");
+        yield return new WaitForSeconds(.5f);
+        Destroy(this.gameObject);
     }
 }
