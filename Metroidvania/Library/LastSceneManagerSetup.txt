@@ -1,19 +1,10 @@
 sceneSetups:
-- path: Assets/Scenes/Player.unity
-  isLoaded: 1
-  isActive: 1
-- path: Assets/Scenes/Levels/Area1.unity
-  isLoaded: 1
-  isActive: 0
-- path: Assets/Scenes/Levels/Area5.unity
-  isLoaded: 0
-  isActive: 0
-- path: Assets/Scenes/Levels/Area7.unity
-  isLoaded: 0
-  isActive: 0
 - path: Assets/Scenes/Levels/Area8.unity
   isLoaded: 0
   isActive: 0
-- path: Assets/Scenes/Levels/Area9.unity
-  isLoaded: 0
+- path: Assets/Scenes/Player.unity
+  isLoaded: 1
+  isActive: 1
+- path: Assets/Scenes/Levels/Area5.unity
+  isLoaded: 1
   isActive: 0

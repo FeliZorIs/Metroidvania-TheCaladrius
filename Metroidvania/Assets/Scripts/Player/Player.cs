@@ -53,6 +53,8 @@ public class Player : MonoBehaviour {
         Jumping,
         Attacking,
         KnockBack,
+        Died,
+        Dead,
     };
     PlayerState playerState;
 
@@ -107,6 +109,16 @@ public class Player : MonoBehaviour {
                 anim.SetTrigger("player_knockback");
                 playerState = PlayerState.Idle;
                 break;
+            case PlayerState.Died:
+                anim.SetTrigger("player_dead");
+                playerState = PlayerState.Dead;
+                break;
+            case PlayerState.Dead:
+                GetComponent<BoxCollider2D>().enabled = false;
+                GetComponent<Rigidbody2D>().simulated = false;
+                speed = 0;
+                tempSpeed = 0;
+                break;
         }
 
         //ATTACK
@@ -130,6 +142,7 @@ public class Player : MonoBehaviour {
         //things that happen when you die
         if (health <= 0)
         {
+            playerState = PlayerState.Died;
             MyCamera.GetComponent<NegativeScreen>().enabled = true;
         }
 	}

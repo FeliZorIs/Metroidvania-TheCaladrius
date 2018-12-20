@@ -77,10 +77,10 @@ public class GameController : MonoBehaviour
                 return;
 
 
-                if (!(SceneManager.GetSceneByName("Player").isLoaded))
-                    SceneManager.LoadScene("Player", LoadSceneMode.Additive);
+            if (!(SceneManager.GetSceneByName("Player").isLoaded))
+                SceneManager.LoadScene("Player", LoadSceneMode.Additive);
 
-            //SceneManager.LoadScene(data.sceneIndex, LoadSceneMode.Additive);
+            //SceneManager.UnloadScene("Main Menu");
             playerPositionX = data.playerPosX;
             playerPositionY = data.playerPosY;
             playerPositionZ = data.playerPosZ;

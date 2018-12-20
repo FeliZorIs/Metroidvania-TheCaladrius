@@ -186,11 +186,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4102741772483904, guid: c2e535bb39b4b444c928e2a9a60ac120, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 31.27
+      value: 338.9
       objectReference: {fileID: 0}
     - target: {fileID: 4102741772483904, guid: c2e535bb39b4b444c928e2a9a60ac120, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 14.57
+      value: -86.1
       objectReference: {fileID: 0}
     - target: {fileID: 4102741772483904, guid: c2e535bb39b4b444c928e2a9a60ac120, type: 2}
       propertyPath: m_LocalPosition.z
@@ -833,6 +833,16 @@ Prefab:
         type: 2}
       propertyPath: m_ScreenMatchMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224866055758074148, guid: 9b000daaea547a944a169c7e6c82f608,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 100.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 224866055758074148, guid: 9b000daaea547a944a169c7e6c82f608,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -455
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b000daaea547a944a169c7e6c82f608, type: 2}

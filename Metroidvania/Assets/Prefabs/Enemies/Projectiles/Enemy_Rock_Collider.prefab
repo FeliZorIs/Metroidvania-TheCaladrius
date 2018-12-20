@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50072113917081318}
   m_Layer: 0
   m_Name: Enemy_Rock_Collider
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,6 +130,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   player: {fileID: 0}
+  bulletCrash: {fileID: 4174224208822696, guid: 7cb92d729ab59104fa05996141420252,
+    type: 2}
 --- !u!212 &212919173504771558
 SpriteRenderer:
   m_ObjectHideFlags: 1
