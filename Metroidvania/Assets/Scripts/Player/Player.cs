@@ -17,6 +17,7 @@ public class Player : MonoBehaviour {
     public int                  Jcount = 0;
     public int                  MaxJump;
     public float                health;
+    float                       maxHealth;                  
 
     public float                fallMultiplier = 2.5f;
     public float                lowJumpMultiplier = 2f;
@@ -70,6 +71,7 @@ public class Player : MonoBehaviour {
         MyCamera.GetComponent<NegativeScreen>().enabled = false;
         attackTime = 0;
         Instantiate(loadIn, transform.position, Quaternion.identity);
+        maxHealth = health;
 
 /*
         if (ButtonManager_Menu.loaded != false)
@@ -87,6 +89,11 @@ public class Player : MonoBehaviour {
     {
         //sends the name of the current area to the MarkerManager. Retrieved by AreaPasser
         MarkerManager.GetComponent<MarkerManager>().areaName = areaPasser;
+
+        if (health >= maxHealth)
+        {
+            health = maxHealth;
+        }
         
         switch (playerState)
         { 
